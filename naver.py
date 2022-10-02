@@ -18,7 +18,13 @@ def naver_search(keyword = None):
             
             for news in news_posts:
                 newspaper = news.find('a', class_="info press")
-                time = news.find('span', class_="info")
+                time = news.find_all('span', class_="info")
+
+                #날짜 부분에 날짜가 아닌 내용이 들어오는 경우를 수정함
+                if len(time) >= 2:
+                    time = time[1]
+                else:
+                    time = news.find('span', class_="info")
                 title = news.find('a', class_="news_tit")
                 link = title['href']
                 
@@ -30,7 +36,5 @@ def naver_search(keyword = None):
                 }
 
                 results.append(news_data)
+
     return results
-
-
-

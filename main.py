@@ -3,7 +3,7 @@ from save2file import save_to_file
 
 def search(keyword):
     if keyword == None:
-        print("pls. input keyword")
+        print("pls. input keyword again")
         return input()
     else:
         result = naver_search(keyword)
@@ -13,5 +13,5 @@ def search(keyword):
         #print(result, "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\n\n")
     return result
 
-word = input()
+word = input("input a keyword: ")
 search(word)
