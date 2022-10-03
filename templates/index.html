@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naver News Search</title>
+    <link rel="stylesheet" 
+    href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+ 
+        <h1>Naver News Search</h1>
+        <h4>What keyword do you want to search?</h4>
+        <form action="/search">
+            <input type="text" name="keyword" placeholder="Write one keyword please"/>
+            
+            <hgroup>
+                <input type="number" name="start_page" placeholder="Which page to start searching? (from 1)"/>
+                <input type="number" name="limit" placeholder="How many pages to search?" />
+
+            </hgroup>
+            <button>Search</button>
+        </form>
+    </main>
+</body>
+</html>

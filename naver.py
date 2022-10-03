@@ -2,7 +2,7 @@ from requests import get
 from bs4 import BeautifulSoup
 
 #페이지 이동하며 크롤링하기
-def get_page_count(keyword):
+def get_page_count(keyword, start_page, limit):
 
     base_url = "https://search.naver.com/search.naver?where=news&sm=tab_jum&query="
     full_url = f"{base_url}{keyword}"
@@ -18,30 +18,30 @@ def get_page_count(keyword):
         if pagination == None:
             return 1
         
-        start_page = input("Choose which page to start from: ")
-        limit = input("Make a limit to the end page during searching (number of end page): ")
+        #start_page = input("Choose which page to start from: ")
+        #limit = input("Make a limit to the end page during searching (number of end page): ")
         if start_page == None:
             count = 1
         else: count = int(start_page) #서칭을 시작할 페이지 쪽수
         
-        page_number = page_turner(count, full_url, int(limit))
+        page_number = page_turner(count, int(limit), full_url)
         print(page_number)
     return page_number
 
 
 
-def page_turner(count_start, full_url, limit):
+def page_turner(count_start, limit, full_url):
     total_page = []
     page = len(total_page)
     start = count_start
     
-
+    """
     if start > limit:
         print("Wrong directive. Pls. insert right number of page.")
         start = int(input("Choose which page to start from: "))
         limit = int(input("Make a limit to the end page during searching (number of end page): "))        
-
-
+    """
+    
     while start <= page+count_start:
         print("start: ", start)
 
@@ -70,8 +70,8 @@ def page_turner(count_start, full_url, limit):
 
 
     count = len(total_page)        
-    choose_pages = input(f"How many pages do you want to search? (from {count_start} page to {count+1} page): ")
-    for choice in range(int(choose_pages)+1):
+    #choose_pages = input(f"How many pages do you want to search? (from {count_start} page to {count+1} page): ")
+    for choice in range(int(count)+1):
         finish = total_page[:choice]
     
     return finish
@@ -79,9 +79,9 @@ def page_turner(count_start, full_url, limit):
 
 
 
-def naver_search(keyword = None):
+def naver_search(keyword = None, start_page = 0, limit = None):
 
-    pages = get_page_count(keyword)
+    pages = get_page_count(keyword, start_page, limit)
     print("Found", pages, "pages")
 
     results = []

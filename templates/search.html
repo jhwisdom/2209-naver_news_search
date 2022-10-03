@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaverNewsSearch</title>
+    <link rel="stylesheet" 
+    href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <hgroup>
+            <h1>Search Results for "{{keyword}}":</h1>
+            <a target="_blank" href="/export?keyword={{keyword}}">Export to file</a>
+        </hgroup>
+
+        <figure>
+            <table role="grid">
+                <thead>
+                    <tr>
+                        <th>Newspaper</th>
+                        <th>Time</th>
+                        <th>Title</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for news in news_lists %}
+                    <tr>
+                        <td>{{news.newspaper}}</td>
+                        <td>{{news.time}}</td>
+                        <td>{{news.title}}</td>
+                        <td><a href="{{news.link}}" target="_blank">Go to read more</a></td>
+                    </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </figure>
+    </main>
+</body>
+</html>
