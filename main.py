@@ -48,5 +48,5 @@ def export():
     
 if __name__ == "__main__":
     #port = int(os.environ.get("PORT", 5000))
-    #app.run(host='0.0.0.0', port=port, debug = True)
+    #app.run(host='0.0.0.0', port=port, debug = True) // Procfile에 --bind 0.0.0.0:${PORT} 입력
     app.run()
