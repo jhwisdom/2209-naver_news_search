@@ -1,8 +1,10 @@
+import os
+
 from flask import Flask, render_template, request, redirect, send_file
 from naver import naver_search
 from save2file import save_to_file
 
-app = Flask("NaverNewsSearch")
+app = Flask(__name__)
 
 db = {}
 
@@ -44,5 +46,6 @@ def export():
     print("saved")
     return send_file(f"{keyword}.csv", as_attachment=True)
     
-
-app.run(host='0.0.0.0', debug = True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug = True)
