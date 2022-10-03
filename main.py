@@ -22,7 +22,7 @@ def search():
         print("Wrong directive")
         return redirect("/")
 
-    if keyword == None:
+    if keyword == None or start_page == None or limit == None:
         return redirect("/")
     if keyword in db:
         news = db[keyword]
