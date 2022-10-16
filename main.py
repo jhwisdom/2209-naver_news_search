@@ -6,8 +6,6 @@ from save2file import save_to_file
 
 app = Flask(__name__)
 
-db = {}
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -24,16 +22,12 @@ def search():
 
     if keyword == None or start_page == None or limit == None:
         return redirect("/")
-    if keyword in db:
-        news = db[keyword]
     else:
         result = naver_search(keyword, start_page, limit)
         print("search done")
-        db[keyword] = result
-        news = db[keyword]
+        news = result
     return render_template("search.html", keyword=keyword, news_lists=news)    
-        
-        
+               
     
 @app.route("/export")
 def export():
